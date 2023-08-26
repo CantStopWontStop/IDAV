@@ -1,0 +1,139 @@
+---
+title: Introduction to Data Analysis and Visualization with R 
+author: Sorie Dumbuya
+date: June 30, 2023
+format:
+    html:
+        theme: flatly
+        toc: true
+---
+
+# **Course Description**
+
+This course is designed to introduce students to the R programming language for data analysis and visualization. The course will cover essential data analysis techniques, including importing and cleaning data, data manipulation, basic statistical analysis, and data visualization. By the end of the course, students will have the foundational skills necessary to conduct basic data analysis and create effective visualizations in R.
+
+# **Learning Objectives**
+
+-   Understand the basics of the R programming language and its applications in data analysis and visualization
+
+-   Use R to import, clean, and transform data
+
+-   Perform basic statistical analysis using R
+
+-   Create effective data visualizations using R
+
+# **Schedule**
+
+## Week 1: Introduction to R and RStudio (6 hours)
+
+------------------------------------------------------------------------
+
+### Topics Covered
+
+-   Introduction to R and its applications in data analysis and visualization
+
+-   Setting up R and RStudio
+
+-   R syntax and data types
+
+-   Basic operations and functions in R
+
+### Resources
+
+-   Video: "R Programming Basics" by FreeCodeCamp (3 hours) -[ https://www.youtube.com/watch?v=3k9CukDp-Fs](https://www.youtube.com/watch?v=3k9CukDp-Fs)
+
+-   Text: "R for Data Science" by Hadley Wickham and Garrett Grolemund -[ https://r4ds.had.co.nz/](https://r4ds.had.co.nz/)
+
+-   Text: "The R Cookbook" by Paul Teetor -[ https://www.oreilly.com/library/view/r-cookbook/9781449307264/](https://www.oreilly.com/library/view/r-cookbook/9781449307264/)
+
+### Example Exercises
+
+-   Basic R syntax and data types
+
+-   Basic operations and functions in R
+
+## Week 2: Data Import and Cleaning (6 hours)
+
+------------------------------------------------------------------------
+
+### Topics Covered
+
+-   Importing data into R
+
+-   Data cleaning and preparation
+
+-   Data transformation and manipulation
+
+-   Working with different types of data
+
+### Resources
+
+-   Video: "Data Importing in R: How to use readr and readxl packages" by ExcelR Solutions (3 hours) -[ https://www.youtube.com/watch?v=ZCJtv23iPNE](https://www.youtube.com/watch?v=ZCJtv23iPNE)
+
+-   Text: "Data Wrangling with R" by Hadley Wickham -[ https://tidyr.tidyverse.org/](https://tidyr.tidyverse.org/)
+
+-   Text: "Text Mining with R" by Julia Silge and David Robinson -[ https://www.tidytextmining.com/](https://www.tidytextmining.com/)
+
+### Example Exercises
+
+-   Importing data into R
+
+-   Cleaning and preparing data
+
+-   Transforming and manipulating data
+
+## Week 3: Basic Statistical Analysis (6 hours)
+
+------------------------------------------------------------------------
+
+### Topics Covered
+
+-   Descriptive statistics
+
+-   Inferential statistics
+
+-   Correlation and regression analysis
+
+### Resources
+
+-   Video: "Introduction to Statistics with R" by Dr. Nicole Radziwill (3 hours) -[ https://www.youtube.com/watch?v=e4WCgC3Y5vw](https://www.youtube.com/watch?v=e4WCgC3Y5vw)
+
+-   Text: "R Graphics Cookbook" by Winston Chang -[ https://r-graphics.org/](https://r-graphics.org/)
+
+-   Text: "Introduction to Statistical Learning" by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani -[ https://www.statlearning.com/](https://www.statlearning.com/)
+
+### Example Exercises
+
+-   Creating descriptive statistics
+
+-   Performing correlation and regression analysis
+
+## Week 4: Data Visualization (6 hours)
+
+------------------------------------------------------------------------
+
+### Topics Covered
+
+-   Data visualization principles
+
+-   Types of data visualization
+
+-   Creating effective visualizations in R
+
+-   Customizing plots and graphics
+
+### Resources
+
+-   Video: "Data Visualization in R" by Hadley Wickham (3 hours) -[ https://vimeo.com/33727555](https://vimeo.com/33727555)
+
+-   Text: "ggplot2: Elegant Graphics for Data Analysis" by Hadley Wickham -[ https://ggplot2-book.org/](https://ggplot2-book.org/)
+
+-   Text: "Data Visualization with ggplot2" by Hadley Wickham -[ https://r4ds.had.co.nz/data-visualisation.html](https://r4ds.had.co.nz/data-visualisation.html)
+
+### Example Exercises
+
+-   Creating basic and complex visualizations
+
+-   Customizing and improving visual
+
+# **Project**

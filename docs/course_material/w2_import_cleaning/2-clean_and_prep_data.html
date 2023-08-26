@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction to Data Analysis and Visualization - 10&nbsp; Numeric data type</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../course_material/w2_import_cleaning/3-transform_and_manipulate_data.html" rel="next">
+<link href="../../course_material/w2_import_cleaning/1-import_data.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../course_material/w2_import_cleaning/0_intro_to_working_with_data_in_r.html">Data Import and Cleaning</a></li><li class="breadcrumb-item"><a href="../../course_material/w2_import_cleaning/2-clean_and_prep_data.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Numeric data type</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Introduction to Data Analysis and Visualization</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Overview</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../dav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Data Revolution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../ace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">African-Centered Education</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Introduction to R and RStudio</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w1_Introduction/0-intro_to_r_and_rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lesson Plan: Introduction to R and RStudio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w1_Introduction/1-Intro_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w1_Introduction/2-setting_up_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Setting up R and RStudio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w1_Introduction/3-syntax_and_data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Syntax and Data Types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w1_Introduction/4-operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Operations in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w1_Introduction/5-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Functions in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w1_Introduction/6-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Quarto</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Data Import and Cleaning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w2_import_cleaning/0_intro_to_working_with_data_in_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lesson Plan: Data Cleaning and Preparation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w2_import_cleaning/1-import_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import data from a CSV file</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w2_import_cleaning/2-clean_and_prep_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Numeric data type</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w2_import_cleaning/3-transform_and_manipulate_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Selecting specific columns</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w2_import_cleaning/4-work_with_different_data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assigning numeric values to a variable</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Basic Statistical Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w3_statistics/0_intro_to_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Lesson Plan: Basic Statistical Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w3_statistics/1-types_of_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Types of Statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w3_statistics/2-descriptive_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Data Visualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w4_visualization/0-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Lesson Plan: Data Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w4_visualization/1-intro_to_data_viz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importance of Data Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w4_visualization/2-principles_of_data_viz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Principles of Effective Data Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../course_material/w4_visualization/3-intro_to_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">ggplot2 and Grammar of Graphics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">References</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#character-data-type" id="toc-character-data-type" class="nav-link active" data-scroll-target="#character-data-type"><span class="header-section-number">11</span> Character data type</a></li>
+  <li><a href="#logical-data-type" id="toc-logical-data-type" class="nav-link" data-scroll-target="#logical-data-type"><span class="header-section-number">12</span> Logical data type</a></li>
+  <li><a href="#incorrect-data-types-categorical-data-stored-as-numeric-variables" id="toc-incorrect-data-types-categorical-data-stored-as-numeric-variables" class="nav-link" data-scroll-target="#incorrect-data-types-categorical-data-stored-as-numeric-variables"><span class="header-section-number">13</span> Incorrect data types: Categorical data stored as numeric variables</a></li>
+  <li><a href="#incorrect-data-types-date-or-time-data-stored-as-character-variables" id="toc-incorrect-data-types-date-or-time-data-stored-as-character-variables" class="nav-link" data-scroll-target="#incorrect-data-types-date-or-time-data-stored-as-character-variables"><span class="header-section-number">14</span> Incorrect data types: Date or time data stored as character variables</a></li>
+  <li><a href="#convert-variables-to-character-type" id="toc-convert-variables-to-character-type" class="nav-link" data-scroll-target="#convert-variables-to-character-type"><span class="header-section-number">15</span> Convert variables to character type</a></li>
+  <li><a href="#convert-variables-to-date-type" id="toc-convert-variables-to-date-type" class="nav-link" data-scroll-target="#convert-variables-to-date-type"><span class="header-section-number">16</span> Convert variables to Date type</a></li>
+  <li><a href="#date-formatting-specifying-the-format-for-date-values" id="toc-date-formatting-specifying-the-format-for-date-values" class="nav-link" data-scroll-target="#date-formatting-specifying-the-format-for-date-values"><span class="header-section-number">17</span> Date formatting: Specifying the format for date values</a></li>
+  <li><a href="#text-formatting-converting-text-to-uppercase" id="toc-text-formatting-converting-text-to-uppercase" class="nav-link" data-scroll-target="#text-formatting-converting-text-to-uppercase"><span class="header-section-number">18</span> Text formatting: Converting text to uppercase</a></li>
+  <li><a href="#removing-missing-values" id="toc-removing-missing-values" class="nav-link" data-scroll-target="#removing-missing-values"><span class="header-section-number">19</span> Removing missing values</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Numeric data type</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Understanding Common Data Quality Issues</p>
+<p>Introduction: Data quality plays a vital role in the success of any data analysis and visualization project. In this lesson, we will explore common data quality issues that can arise in datasets and discuss their impact on analysis results. Understanding these issues will enable you to identify and address them effectively, ensuring the reliability and accuracy of your data.</p>
+<p>Missing Data: Missing data refers to the absence of values in one or more variables of a dataset. It can occur due to various reasons such as data entry errors, survey non-response, or system issues. Missing data can significantly impact the analysis by introducing bias or affecting the statistical power. In this section, we will learn techniques to handle missing data, including:</p>
+<p>Identifying missing data patterns using summary statistics or visualization. Dealing with missing data through imputation techniques such as mean imputation, median imputation, or multiple imputation. Evaluating the impact of different imputation methods on analysis results. Outliers: Outliers are extreme values that deviate significantly from the overall pattern of the data. They can arise due to measurement errors, data entry mistakes, or genuine extreme observations. Outliers can skew the analysis results, distort statistical models, or affect visualization interpretations. In this section, we will cover:</p>
+<p>Identifying outliers using graphical techniques like box plots or scatter plots. Applying statistical methods such as the Z-score or the modified Z-score method to detect outliers. Handling outliers through various approaches such as removing outliers, transforming variables, or using robust statistical methods. Data Type Mismatches: Data type mismatches occur when variables are assigned incorrect data types. For example, a numerical variable may be stored as text or vice versa. Data type mismatches can lead to incorrect calculations, unexpected behavior, or errors during analysis. In this section, we will focus on:</p>
+<p>Identifying data type mismatches using functions like str() or examining summary statistics. Converting variables to the appropriate data types using functions like as.numeric(), as.character(), or as.Date(). Ensuring consistency and accuracy by verifying data types after conversion. Inconsistent Formatting: Inconsistent formatting refers to variations in the representation of data, such as inconsistent date formats, different units of measurement, or inconsistent capitalization in categorical variables. Inconsistent formatting can create challenges during analysis and visualization. In this section, we will explore:</p>
+<p>Identifying inconsistencies in formatting through visual inspection or pattern matching. Standardizing data formatting using functions like format(), regular expressions, or string manipulation functions. Ensuring consistent formatting to improve data compatibility and avoid interpretation errors. Conclusion: Understanding common data quality issues is essential for conducting reliable data analysis and visualization. By being aware of missing data, outliers, data type mismatches, and inconsistent formatting, you can effectively address these issues and ensure the integrity and accuracy of your data. Remember to apply appropriate techniques and consider the impact of data quality on your analysis results.</p>
+<p>Handling Missing Data: Imputation and Deletion</p>
+<p>Introduction: Missing data is a common issue in datasets and can pose challenges during data analysis and visualization. In this lesson, we will explore strategies for handling missing data, including imputation and deletion. Understanding these techniques will enable you to make informed decisions on how to address missing values effectively while maintaining the integrity of your data.</p>
+<p>Types of Missing Data: Before diving into the strategies, it’s important to understand the types of missing data:</p>
+<ol type="a">
+<li>Missing Completely at Random (MCAR): When the missingness of data is unrelated to any other variable in the dataset. In this case, the missing data does not introduce bias into the analysis.</li>
+<li>Missing at Random (MAR): When the missingness is related to other observed variables but not to the missing data itself. MAR can introduce bias if not handled properly.</li>
+<li>Missing Not at Random (MNAR): When the missingness is related to the missing data itself. MNAR can introduce significant bias and challenge the analysis.</li>
+</ol>
+<p>Imputation Techniques: Imputation involves replacing missing values with estimated values based on the available data. Here are some commonly used imputation techniques:</p>
+<ol type="a">
+<li>Mean/Mode Imputation: Replace missing values with the mean (for numeric variables) or mode (for categorical variables) of the observed values in that variable.</li>
+<li>Last Observation Carried Forward (LOCF): For time-series data, impute missing values with the last observed value.</li>
+<li>Multiple Imputation: Generate multiple imputed datasets using statistical models and combine the results to account for uncertainty.</li>
+<li>K-Nearest Neighbors (KNN) Imputation: Predict missing values based on the values of the nearest neighbors in terms of other variables.</li>
+</ol>
+<p>Deletion Techniques: In some cases, it may be appropriate to delete records or variables with missing data. Here are two deletion techniques:</p>
+<ol type="a">
+<li>Listwise Deletion (Complete Case Analysis): Remove records with any missing values from the analysis, resulting in a smaller dataset.</li>
+<li>Pairwise Deletion: Include records with complete information for each analysis separately, allowing for analysis on subsets of the data.</li>
+</ol>
+<p>Considerations and Best Practices: When handling missing data, it’s important to consider the following:</p>
+<ol type="a">
+<li>Understand the missing data mechanism (MCAR, MAR, or MNAR) and its potential impact on the analysis.</li>
+<li>Evaluate the amount and pattern of missing data to determine the most appropriate technique.</li>
+<li>Be cautious about the potential biases introduced by imputation or deletion.</li>
+<li>Document and report the chosen approach and any assumptions made during the process.</li>
+</ol>
+<p>Conclusion: Handling missing data requires careful consideration to ensure accurate and reliable analysis. Whether through imputation or deletion, understanding the types of missing data and selecting appropriate techniques can help minimize bias and maintain data integrity. Remember to assess the missing data mechanism, evaluate different imputation strategies, and document your choices to ensure transparency in your data analysis and visualization.</p>
+<p>Detecting and Addressing Outliers</p>
+<p>Introduction: Outliers are extreme observations that deviate significantly from the overall pattern of the data. They can occur due to measurement errors, data entry mistakes, or genuine extreme values. Detecting and addressing outliers is crucial for accurate data analysis and visualization. In this lesson, we will explore techniques to detect outliers and discuss strategies for handling them effectively.</p>
+<p>Visual Methods for Outlier Detection: Visual methods can help identify potential outliers by examining the distribution and relationships within the data. Here are some commonly used visual techniques:</p>
+<ol type="a">
+<li>Box plots: Box plots provide a visual summary of the data distribution, including potential outliers as points beyond the whiskers.</li>
+<li>Scatter plots: Scatter plots can reveal unusual observations that deviate from the general pattern of the data.</li>
+<li>Histograms: Histograms can highlight extreme values that fall outside the typical range.</li>
+</ol>
+<p>Statistical Methods for Outlier Detection: Statistical methods provide quantitative measures to identify outliers based on their deviation from the overall data distribution. Some commonly used statistical techniques include:</p>
+<ol type="a">
+<li>Z-score: The Z-score measures how many standard deviations an observation is away from the mean. Observations with a Z-score beyond a certain threshold (e.g., ±3) can be considered outliers.</li>
+<li>Modified Z-score: The modified Z-score adjusts for skewed distributions and is robust to outliers. It uses the median and median absolute deviation (MAD) to identify outliers.</li>
+<li>Tukey’s fences: Tukey’s fences define thresholds based on the interquartile range (IQR). Observations beyond the fences (Q1 - 1.5 * IQR or Q3 + 1.5 * IQR) are considered outliers.</li>
+</ol>
+<p>Strategies for Handling Outliers: Once outliers are identified, different strategies can be employed to address them:</p>
+<ol type="a">
+<li>Remove outliers: If the outliers are due to data entry errors or measurement issues, it may be appropriate to remove them from the dataset. However, this should be done with caution, and the impact of outlier removal on the analysis results should be carefully considered.</li>
+<li>Transform variables: Applying mathematical transformations, such as logarithmic transformation or square root transformation, can help mitigate the impact of outliers and normalize the distribution.</li>
+<li>Winsorization: Winsorization involves replacing extreme values with values at a specified percentile. For example, values above the 99th percentile can be replaced with the value at the 99th percentile.</li>
+<li>Robust statistical methods: Using statistical methods that are less sensitive to outliers, such as robust regression or robust estimators, can help mitigate the influence of outliers on analysis results.</li>
+</ol>
+<p>Conclusion: Detecting and addressing outliers is an important step in data analysis and visualization. By employing visual and statistical techniques, you can identify potential outliers and make informed decisions on how to handle them effectively. Whether through removal, transformation, or robust methods, addressing outliers appropriately ensures that your data analysis is accurate, reliable, and free from the undue influence of extreme observations.</p>
+<p>Correcting Data Types and Formatting</p>
+<p>Introduction: Data types and formatting play a critical role in data analysis and visualization. In this lesson, we will explore the importance of data types and formatting in R, and learn techniques to correct and adjust them to ensure accurate and meaningful analysis.</p>
+<p>Importance of Data Types: Data types define the nature and characteristics of variables in a dataset. Understanding and correctly specifying data types is crucial for performing appropriate operations and calculations. Let’s take a look at some examples of common data types in R: R Copy code age &lt;- 25 height &lt;- 1.75</p>
+<section id="character-data-type" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Character data type</h1>
+<p>name &lt;- “John Doe” city &lt;- ‘New York’</p>
+</section>
+<section id="logical-data-type" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Logical data type</h1>
+<p>isStudent &lt;- TRUE hasCar &lt;- FALSE Identifying Incorrect Data Types: Incorrect data types can lead to errors in calculations and misleading analysis results. Here are some signs that may indicate incorrect data types: R Copy code # Incorrect data types: Numeric data stored as character variables age &lt;- “25” height &lt;- “1.75”</p>
+</section>
+<section id="incorrect-data-types-categorical-data-stored-as-numeric-variables" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Incorrect data types: Categorical data stored as numeric variables</h1>
+<p>gender &lt;- 1 employmentStatus &lt;- 0</p>
+</section>
+<section id="incorrect-data-types-date-or-time-data-stored-as-character-variables" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Incorrect data types: Date or time data stored as character variables</h1>
+<p>dateOfBirth &lt;- “1990-05-15” Correcting Data Types: To correct data types in R, we can use functions and techniques to convert variables to their appropriate types. Here are some commonly used functions: R Copy code # Convert variables to numeric type age &lt;- as.numeric(age) height &lt;- as.numeric(height)</p>
+</section>
+<section id="convert-variables-to-character-type" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Convert variables to character type</h1>
+<p>gender &lt;- as.character(gender) employmentStatus &lt;- as.character(employmentStatus)</p>
+</section>
+<section id="convert-variables-to-date-type" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Convert variables to Date type</h1>
+<p>dateOfBirth &lt;- as.Date(dateOfBirth) Adjusting Data Formatting: In addition to data types, formatting can affect the readability and interpretation of data. Here are some formatting considerations: R Copy code # Numeric formatting: Adjusting decimal places and using scientific notation pi_value &lt;- 3.141592653589793 formatted_pi &lt;- format(pi_value, digits = 4, scientific = TRUE)</p>
+</section>
+<section id="date-formatting-specifying-the-format-for-date-values" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> Date formatting: Specifying the format for date values</h1>
+<p>today &lt;- Sys.Date() formatted_date &lt;- format(today, format = “%B %d, %Y”)</p>
+</section>
+<section id="text-formatting-converting-text-to-uppercase" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Text formatting: Converting text to uppercase</h1>
+<p>message &lt;- “Hello, world!” formatted_message &lt;- toupper(message) Handling Missing Values during Type Conversion: When converting data types, missing values (e.g., NA or blank cells) need to be handled appropriately. R provides functions to handle missing values during type conversion, such as na.strings parameter in read functions or na.omit() function to remove missing values. R Copy code # Handling missing values during type conversion data &lt;- c(“1”, “2”, “NA”, “4”, “5”) converted_data &lt;- as.numeric(data) # Converts “NA” to NA</p>
+</section>
+<section id="removing-missing-values" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> Removing missing values</h1>
+<p>cleaned_data &lt;- na.omit(converted_data) Conclusion: Correcting data types and formatting is essential for accurate data analysis and visualization. By understanding the importance of data types, identifying incorrect types, and using appropriate conversion functions, you can ensure that your data is correctly represented and ready for meaningful analysis. Additionally, adjusting data formatting enhances readability and helps convey the intended meaning. Taking these steps will enable you to perform accurate calculations, conduct meaningful analysis, and present your findings effectively.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../course_material/w2_import_cleaning/1-import_data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import data from a CSV file</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../course_material/w2_import_cleaning/3-transform_and_manipulate_data.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Selecting specific columns</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

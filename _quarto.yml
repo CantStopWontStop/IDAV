@@ -1,0 +1,54 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Introduction to Data Analysis and Visualization"
+  author: "Afromation Digital Institute"
+  chapters:
+    - part: Overview
+      chapters: 
+        - index.qmd
+        - dav.qmd
+        - ace.qmd
+    - part: Introduction to R and RStudio
+      chapters:
+        - 'course_material/w1_Introduction/0-intro_to_r_and_rstudio.qmd'
+        - 'course_material/w1_Introduction/1-Intro_to_R.qmd'
+        - 'course_material/w1_Introduction/2-setting_up_r.qmd'
+        - 'course_material/w1_Introduction/3-syntax_and_data_types.qmd'
+        - 'course_material/w1_Introduction/4-operations.qmd'
+        - 'course_material/w1_Introduction/5-functions.qmd'
+        - 'course_material/w1_Introduction/6-quarto.qmd'
+    - part: Data Import and Cleaning
+      chapters:
+        - 'course_material/w2_import_cleaning/0_intro_to_working_with_data_in_r.qmd'
+        - 'course_material/w2_import_cleaning/1-import_data.qmd'
+        - 'course_material/w2_import_cleaning/2-clean_and_prep_data.qmd'
+        - 'course_material/w2_import_cleaning/3-transform_and_manipulate_data.qmd'
+        - 'course_material/w2_import_cleaning/4-work_with_different_data_types.qmd'
+    - part: Basic Statistical Analysis
+      chapters:
+        - 'course_material/w3_statistics/0_intro_to_statistics.qmd'
+        - 'course_material/w3_statistics/1-types_of_statistics.qmd'
+        - 'course_material/w3_statistics/2-descriptive_statistics.qmd'
+    - part: Data Visualization
+      chapters:
+        - 'course_material/w4_visualization/0-intro.qmd'
+        - 'course_material/w4_visualization/1-intro_to_data_viz.qmd'
+        - 'course_material/w4_visualization/2-principles_of_data_viz.qmd'
+        - 'course_material/w4_visualization/3-intro_to_ggplot.qmd'
+    - part: References
+      chapters: 
+        - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: flatly
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
